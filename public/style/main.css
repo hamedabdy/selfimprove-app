@@ -1,0 +1,106 @@
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+#goal {
+    min-height: 2.5em;
+    max-height: 250px;
+    resize: none;
+    border-radius: 0.75rem;
+    border: 1.5px solid #bfc9d1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding-right: 2.5em;
+    font-size: 1.1rem;
+    background: #f9fbfd;
+    transition: border-color 0.2s;
+    overflow-y: auto;
+}
+#goal:focus {
+    border-color: #2563eb;
+    background: #fff;
+    outline: none;
+}
+.textarea-wrapper {
+    position: relative;
+    width: 100%;
+}
+.send-btn-inside {
+    position: absolute;
+    right: 0.4em;
+    bottom: 0.4em;
+    z-index: 2;
+    border-radius: 50%;
+    padding: 0.25em 0.32em;
+    background: #4884a8;
+    color: #111;
+    border: 1px solid #4884a8;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    min-width: 32px;
+    min-height: 32px;
+    height: 32px;
+    width: 32px;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.send-btn-inside:disabled {
+    background: #8fc3ec;
+    color: #8fc3ec;
+    cursor: not-allowed;
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+}
+.send-btn-inside svg {
+    margin: 0;
+    display: block;
+}
+.alert-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: none;
+    padding-right: 2.5rem;
+}
+.alert-custom .btn-close {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.results-section {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    margin-top: 2.5rem;
+    padding: 2rem 2.5rem 2.5rem 2.5rem;
+}
+.results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+.results-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+}
+.results-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+@media (max-width: 600px) {
+    .results-section { padding: 1rem; }
+}

@@ -1,0 +1,10 @@
+{
+  "watch": ["server.js", "routes/", "utils/", "modules/"],
+  "ignore": [
+    "logs/*",
+    "coverage/*",
+    "node_modules/*",
+    "backups/*",
+    "__tests__/*"
+  ]
+}
