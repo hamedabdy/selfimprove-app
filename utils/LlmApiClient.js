@@ -10,6 +10,44 @@ class LlmApiClient {
             "HTTP-Referer": "localhost",
             "X-Title": "self-improving-app",
         };
+        this.response_format = {
+            "type": "json_schema",
+            "json_schema": {
+                "name": "code_update",
+                "strict": true,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "filename": {
+                            "type": "string",
+                            "description": "path and the name of the file to be updated"
+                        },
+                        "updated_code": {
+                            "type": "string",
+                            "description": "Updated code content. Do not include any comments or explanations, just the code itself."
+                        },
+                        "detected_language": {
+                            "type": "string",
+                            "description": "Detected programming language of the file"
+                        },
+                        "change_summary": {
+                            "type": "string",
+                            "description": "summary of the changes made"
+                        },
+                        "no_changes": {
+                            "type": "boolean",
+                            "description": "Indicates if no changes were made"
+                        },
+                        "exec_time": {
+                            "type": "string",
+                            "description": "duration of prompt execution in seconds"
+                        }
+                    },
+                    "required": ["filename", "updated_code", "detected_language", "change_summary", "no_changes", "exec_time"],
+                    "additionalProperties": false
+                }
+            }
+        };
     }
 
     buildPrompts(goal, contextText) {
@@ -35,47 +73,9 @@ class LlmApiClient {
                 { role: "system", content: "You are a helpful assistant for a self-improving web app." },
                 { role: "user", content: promptEngineer },
                 { role: "assistant", content: "Please provide the optimized goal description." },
-                { role: "user", content: goal },
                 { role: "user", content: llmPrompt }
             ],
-            "response_format": {
-                "type": "json_schema",
-                "json_schema": {
-                    "name": "code_update",
-                    "strict": true,
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "filename": {
-                                "type": "string",
-                                "description": "path and the name of the file to be updated"
-                            },
-                            "updated_code": {
-                                "type": "string",
-                                "description": "Updated code content. Do not include any comments or explanations, just the code itself."
-                            },
-                            "detected_language": {
-                                "type": "string",
-                                "description": "Detected programming language of the file"
-                            },
-                            "change_summary": {
-                                "type": "string",
-                                "description": "summary of the changes made"
-                            },
-                            "no_changes": {
-                                "type": "boolean",
-                                "description": "Indicates if no changes were made"
-                            },
-                            "exec_time": {
-                                "type": "duration",
-                                "description": "duration of prompt execution in seconds"
-                            }
-                        },
-                        "required": ["filename", "updated_code", "detected_language", "change_summary"],
-                        "additionalProperties": false
-                    }
-                }
-            }
+            response_format: this.response_format,
         }, {
             headers: this.headers
         });
@@ -114,4 +114,4 @@ class LlmApiClient {
     }
 }
 
-module.exports = { LlmApiClient };
+module.exports = LlmApiClient;
