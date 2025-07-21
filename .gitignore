@@ -62,3 +62,6 @@ __test_tmp___test.js/
 # Misc
 *.swp
 *.swo
+
+# Notes
+*.Notes/
