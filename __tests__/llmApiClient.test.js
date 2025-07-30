@@ -1,4 +1,4 @@
-const { LlmApiClient } = require('../utils/LlmApiClient');
+const LlmApiClient = require('../utils/LlmApiClient');
 
 describe('LlmApiClient', () => {
     let client;
